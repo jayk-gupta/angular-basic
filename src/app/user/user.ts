@@ -6,9 +6,18 @@ import { DUMMY_USERS } from './dummy-users';
   standalone: true,
   imports: [],
   templateUrl: './user.html',
-  styleUrl: './user.css',
+  styleUrls: ['./user.css'],
 })
 export class UserComponent {
   // we can access the selected user property from inside the template
   selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)];
+
+// getter: don't call it, use it like a property
+  get imagePath() {
+    return 'assets/users/users/' + this.selectedUser.avatar
+  }
+
+  onSelectUser() {
+    this.selectedUser = DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)];
+  }
 }
